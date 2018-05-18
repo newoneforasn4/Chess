@@ -5,7 +5,7 @@
 class bitboard
 {
 private:
-	u64 board;
+	u64 board[12];
 
 public:
 	// constants
@@ -27,9 +27,11 @@ public:
 	bool bCastle[2] = {false, false};
 
 	bitboard();
+	bitboard(u64 bboard[]);
 	~bitboard();
 
 	u64 getBoard();
+	void setBoard(u64 bboard[]);
 	void resetBoard();
 };
 
