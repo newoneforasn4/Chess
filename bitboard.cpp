@@ -46,3 +46,23 @@ void bitboard::resetBoard()
 	board[11] = wK;
 	return;
 }
+
+bool bitboard::getPlayer()
+{
+	return player;
+}
+
+void bitboard::changePlayer()
+{
+	player = !player;
+}
+
+int bitboard::getTurn()
+{
+	return turn;
+}
+
+void bitboard::incrementTurn()
+{
+	turn++;
+}
