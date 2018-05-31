@@ -47,14 +47,9 @@ void bitboard::resetBoard()
 	return;
 }
 
-bool bitboard::getPlayer()
+int bitboard::getPlayer()
 {
-	return player;
-}
-
-void bitboard::changePlayer()
-{
-	player = !player;
+	return turn%2;
 }
 
 int bitboard::getTurn()

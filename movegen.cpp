@@ -1,7 +1,4 @@
-#include "bitboard.h"
-#include <iostream>
-#include <algorithm>
-#include <string>
+#include "movegen.h"
 
 u64 knightAttacks(u64 knights)
 {
