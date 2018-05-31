@@ -6,6 +6,7 @@ class bitboard
 {
 private:
 	u64 board[12];
+	bool player = true; // true = white, false = black
 
 public:
 	// constants
