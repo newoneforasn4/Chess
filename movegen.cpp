@@ -29,7 +29,7 @@ u64 queenAttacks(u64 queens)
 	return rookAttacks(queens) | bishopAttacks(queens);
 }
 
-void dec2bin(u64 n)
+void printBoard(u64 n)
 {
 	std::string bin;
 	while (n)
@@ -53,8 +53,8 @@ void dec2bin(u64 n)
 int main()
 {
 	bitboard board = bitboard();
-	dec2bin(knightAttacks(board.wN));
-	dec2bin(knightAttacks(board.bN));
+	printBoard(knightAttacks(board.wN));
+	printBoard(knightAttacks(board.bN));
 	return 0;
 }
 
