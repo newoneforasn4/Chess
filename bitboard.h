@@ -35,6 +35,7 @@ public:
 	void setBoard(u64 bboard[]);
 	void resetBoard();
 
+	int getPlayer();
 	int getTurn();
 	void incrementTurn();
 };
