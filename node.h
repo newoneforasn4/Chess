@@ -12,6 +12,7 @@ private:
 
 public:
 	node();
+	node(u64 bboard[]);
 	~node();
 };
 
