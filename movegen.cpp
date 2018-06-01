@@ -37,6 +37,11 @@ u64 kingAttacks(u64 kings)
 		up | down;
 }
 
+u64 move(u64 board[])
+{
+	
+}
+
 void printBoard(u64 n)
 {
 	std::string bin;
