@@ -26,6 +26,17 @@ u64 queenAttacks(u64 queens)
 	return rookAttacks(queens) | bishopAttacks(queens);
 }
 
+u64 kingAttacks(u64 kings)
+{
+	u64 left = (kings >> 1) & 0x7F7F7F7F7F7F7F7F;
+	u64 right = (kings << 1) & 0xFEFEFEFEFEFEFEFE;
+	u64 up = kings << 8;
+	u64 down = kings >> 8;
+	return left | (left << 8) | (left >> 8) | 
+		right | (right << 8) | (right >> 8) |
+		up | down;
+}
+
 void printBoard(u64 n)
 {
 	std::string bin;
@@ -52,6 +63,8 @@ int main()
 	bitboard board = bitboard();
 	printBoard(knightAttacks(board.wN));
 	printBoard(knightAttacks(board.bN));
+	printBoard(kingAttacks(board.wK));
+	printBoard(kingAttacks(board.bK));
 	return 0;
 }
 
