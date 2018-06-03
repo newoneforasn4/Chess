@@ -1,3 +1,4 @@
+#pragma once
 #ifndef tree_h
 #define tree_h
 
@@ -7,7 +8,7 @@ class tree // Used for minimax search
 {
 private:
 	node* root;
-	short height;
+	u8 height;
 
 public:
 	tree();
@@ -15,6 +16,7 @@ public:
 	~tree();
 
 	void populate();
+	void update();
 };
 
 #endif // tree_h

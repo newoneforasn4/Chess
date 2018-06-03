@@ -4,11 +4,15 @@
 bitboard::bitboard()
 {
 	resetBoard();
+	turn = 1;
+	fifty_move_counter = 0;
 }
 
-bitboard::bitboard(u64 bboard[])
+bitboard::bitboard(u64 bboard[], u8 t, u8 fmc)
 {
 	setBoard(bboard);
+	turn = t;
+	fifty_move_counter = fmc;
 }
 
 bitboard::~bitboard()
@@ -47,12 +51,28 @@ void bitboard::resetBoard()
 	return;
 }
 
-int bitboard::getPlayer()
+u64 bitboard::getBlackBoard()
+{
+	u64 black_board = 0;
+	for (u8 i = 6; i < 12; i++)
+		black_board |= board[i];
+	return black_board;
+}
+
+u64 bitboard::getWhiteBoard()
+{
+	u64 white_board = 0;
+	for (u8 i = 0; i < 6; i++)
+		white_board |= board[i];
+	return white_board;
+}
+
+u8 bitboard::getPlayer()
 {
 	return turn%2;
 }
 
-int bitboard::getTurn()
+u8 bitboard::getTurn()
 {
 	return turn;
 }

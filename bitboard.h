@@ -1,12 +1,15 @@
+#pragma once
 #ifndef bitboard_h
 #define bitboard_h
 #define u64 unsigned long long
+#define u8 unsigned short
 
 class bitboard
 {
 private:
 	u64 board[12];
-	int turn = 1; // odd turns = white, even turns = black
+	u8 turn = 1; // odd turns = white, even turns = black
+	u8 fifty_move_counter = 0;
 
 public:
 	// constants
@@ -28,15 +31,18 @@ public:
 	bool bCastle[2] = {false, false};
 
 	bitboard();
-	bitboard(u64 bboard[]);
+	bitboard(u64 bboard[], u8 t, u8 fmc);
 	~bitboard();
 
 	u64 getBoard();
 	void setBoard(u64 bboard[]);
 	void resetBoard();
 
-	int getPlayer();
-	int getTurn();
+	u64 getBlackBoard();
+	u64 getWhiteBoard();
+
+	u8 getPlayer();
+	u8 getTurn();
 	void incrementTurn();
 };
 
