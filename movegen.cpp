@@ -18,9 +18,54 @@ u64 knightAttacks(u64 knights, u64 board)
 	return attacks;
 }
 
-u64 bishopAttacks(u64 bishops)
-{
+u64 generateDiagonalUp(u64 bishops , u8 shift ){
+	u64 u1 =( bishops << shift )&0x000000000000FF00;
+	u64 u = u1;
+	u1 = ( bishops << shift * 2 ) & 0x0000000000FF0000;
+	u = u | u1;
+	u1 = ( bishops << shift * 3 ) & 0x00000000FF000000;
+	u = u | u1;
+	u1 = ( bishops << shift * 4 ) & 0x000000FF00000000;
+	u = u | u1;
+	u1 = ( bishops << shift * 5 ) & 0x0000FF0000000000;
+	u = u | u1;
+	u1 = ( bishops << shift * 6 ) & 0x00FF000000000000;
+	u = u | u1;
+	u1 = ( bishops << shift * 7 ) & 0xFF00000000000000;
+	u = u | u1;
+	
+	return  u;
+}
 
+u64 generateDiagonalDown(u64 bishops, u8 shift){
+	u64 u1 =( bishops >> shift )&0x000000000000FF00;
+	u64 u = u1;
+	u1 = ( bishops >> shift * 2 ) & 0x0000000000FF0000;
+	u = u | u1;
+	u1 = ( bishops >> shift * 3 ) & 0x00000000FF000000;
+	u = u | u1;
+	u1 = ( bishops >> shift * 4 ) & 0x000000FF00000000;
+	u = u | u1;
+	u1 = ( bishops >> shift * 5 ) & 0x0000FF0000000000;
+	u = u | u1;
+	u1 = ( bishops >> shift * 6 ) & 0x00FF000000000000;
+	u = u | u1;
+	u1 = ( bishops >> shift * 7 ) & 0xFF00000000000000;
+	u = u | u1;
+}
+
+u64 bishopAttacks(u64 bishops , u64 currentboard, u64 targetboard)
+{
+	
+	//wip
+	u64 out = generateDiagonalUp(bishops,7)|generateDiagonalUp(bishops,9)|generateDiagonalDown(bishops,7)|generateDiagonalDown(bishops,9);
+	/*u64 out = (generateDiagonalUp(bishops,7)^(generateDiagonalUp(currentboard,7)^currentboard))|
+ 		  (generateDiagonalUp(bishops,9)^(generateDiagonalUp(currentboard,9)^currentboard))|
+ 		  (generateDiagonalDown(bishops,7)^(generateDiagonalDown(currentboard,7)^currentboard))|
+ 		  (generateDiagonalDown(bishops,9)^(generateDiagonalDown(currentboard,9)^currentboard));*/
+	return out;
+	
+	
 }
 
 u64 rookAttacks(u64 rooks)
@@ -30,7 +75,7 @@ u64 rookAttacks(u64 rooks)
 
 u64 queenAttacks(u64 queens)
 {
-	return rookAttacks(queens) | bishopAttacks(queens);
+	//return rookAttacks(queens) | bishopAttacks(queens);
 }
 
 u64 kingAttacks(u64 kings, u64 board)
@@ -77,8 +122,12 @@ void printBoard(u64 n)
 int main()
 {
 	bitboard board = bitboard();
-	printBoard(~board.getWhiteBoard());
-	printBoard(knightAttacks(board.wN, board.getWhiteBoard()));
-	printBoard(knightAttacks(board.bN, board.getBlackBoard()));
+	printBoard(board.wB);
+	printBoard(board.getWhiteBoard());
+	//printBoard(knightAttacks(board.wN, board.getWhiteBoard()));
+	//printBoard(knightAttacks(board.bN, board.getBlackBoard()));
+	//bishopAttacks(board.wB);
+	//printBoard(bishopAttacks(0x0000000000000080));
+	printBoard(bishopAttacks(board.wB,board.wR,board.getBlackBoard()));
 	return 0;
 }
