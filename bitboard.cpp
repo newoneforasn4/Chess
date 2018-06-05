@@ -80,4 +80,5 @@ u8 bitboard::getTurn()
 void bitboard::incrementTurn()
 {
 	turn++;
+	return;
 }

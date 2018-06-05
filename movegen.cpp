@@ -116,6 +116,7 @@ void printBoard(u64 n)
 		std::cout << bin[i];
 	}
 	std::cout << std::endl;
+	return;
 }
 
 // TEST

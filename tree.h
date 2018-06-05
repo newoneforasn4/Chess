@@ -15,6 +15,7 @@ public:
 	tree(u64 bboard[12]);
 	~tree();
 
+	void remove();
 	void populate();
 	void update();
 };
