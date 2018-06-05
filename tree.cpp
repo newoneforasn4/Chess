@@ -19,8 +19,9 @@ tree::~tree()
 
 void tree::remove(node* root)
 {
-	for (u8 i = 0; i < root->children.size(); i++)
-		remove(root->children[i]);
+	std::vector<node> children = root->getChildren();
+	for (u8 i = 0; i < children.size(); i++)
+		remove(&children[i]);
 	delete root;
 	return;
 }

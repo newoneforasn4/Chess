@@ -23,6 +23,8 @@ public:
 	u8 getScore();
 	void setScore(u8 s);
 
+	std::vector<node> getChildren();
+
 	void addChild(node child);
 };
 

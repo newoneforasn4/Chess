@@ -11,7 +11,7 @@ node::node(u64 bboard[])
 
 node::~node()
 {
-	children = std::vector<node>; // This is just as questionable
+	children = std::vector<node>(); // This is just as questionable
 }
 
 void node::setBoard(u64 bboard[])
@@ -29,6 +29,11 @@ void node::setScore(u8 s)
 {
 	score = s;
 	return;
+}
+
+std::vector<node> node::getChildren()
+{
+	return children;
 }
 
 void node::addChild(node child)
